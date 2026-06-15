@@ -110,6 +110,27 @@ jsPsych.data.addProperties({
   screen_height: screen.height
 });
 
+const familiarization_stimuli = [
+  {
+    trial_category: "familiarization",
+    is_catch: false,
+    stim_id: "stim23",
+    stim_number: 23,
+    stim_file: "stim23.png",
+    choices: ["Bouba", "Kiki"],
+    correct_response: ""
+  },
+  {
+    trial_category: "familiarization",
+    is_catch: false,
+    stim_id: "stim30",
+    stim_number: 30,
+    stim_file: "stim30.png",
+    choices: ["Bouba", "Kiki"],
+    correct_response: ""
+  }
+];
+
 function elapsedMs() { return Date.now() - experiment_start; }
 function getRadioValue(name) { return document.querySelector(`input[name="${name}"]:checked`)?.value || ""; }
 function escapeHtml(str) {
@@ -298,6 +319,7 @@ function addVisualTrial(stim) {
   });
 }
 
+familiarization_stimuli.forEach(addVisualTrial);
 stimuli.forEach(addVisualTrial);
 
 // ═══════════════════════════════════════════════════════════════
