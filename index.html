@@ -318,6 +318,8 @@ function addVisualTrial(stim) {
     }
   });
 
+
+}
 timeline.push({
   type: jsPsychHtmlButtonResponse,
   stimulus: `
@@ -329,9 +331,19 @@ timeline.push({
   choices: ["START"],
   button_html: '<button class="jspsych-btn btn-std">%choice%</button>'
 });
-}
-
 familiarization_stimuli.forEach(addVisualTrial);
+timeline.push({
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
+    <div class="panel">
+      <h2>The experiment will now begin</h2>
+      <p>The practice trials are complete.</p>
+      <p>You can now start the main experiment.</p>
+    </div>
+  `,
+  choices: ["START EXPERIMENT"],
+  button_html: '<button class="jspsych-btn btn-std">%choice%</button>'
+});
 stimuli.forEach(addVisualTrial);
 
 // ═══════════════════════════════════════════════════════════════
